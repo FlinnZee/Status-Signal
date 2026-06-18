@@ -10,10 +10,14 @@ use tauri::{AppHandle, Emitter};
 use tauri_plugin_shell::process::CommandEvent;
 use tauri_plugin_shell::ShellExt;
 
-/// Sidecar names as declared in `externalBin` (tauri.conf.json). The shell
-/// scope in `capabilities/default.json` must list these exact strings.
-pub const FFMPEG: &str = "binaries/ffmpeg";
-pub const FFPROBE: &str = "binaries/ffprobe";
+/// Sidecar basenames. NOTE: these are the *runtime* names, not the `externalBin`
+/// paths. Tauri's CLI takes the `externalBin` source (`binaries/ffmpeg-<triple>`)
+/// and copies it FLAT next to the app executable as `ffmpeg.exe`. At runtime the
+/// shell plugin resolves a sidecar by joining the exe's directory with the name
+/// given here (+ platform ext) — so it must be the bare basename. Using the
+/// `binaries/` prefix here points at a non-existent subfolder (Windows os error 3).
+pub const FFMPEG: &str = "ffmpeg";
+pub const FFPROBE: &str = "ffprobe";
 
 /// Result of a run-to-completion sidecar invocation.
 pub struct Captured {
