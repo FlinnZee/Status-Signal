@@ -54,7 +54,7 @@ tricks, no servers, no accounts — everything runs locally on your machine.
 ## Quick start
 
 ```bash
-git clone <your-repo-url> PureSignal
+git clone https://github.com/FlinnZee/Status-Signal.git
 cd PureSignal
 
 pnpm install          # JS dependencies
