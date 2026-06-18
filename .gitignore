@@ -5,6 +5,8 @@ node_modules/
 # ---- Build output ----
 dist/
 src-tauri/target/
+# Tauri-generated capability schemas (regenerated on every build)
+src-tauri/gen/
 
 # ---- Bundled ffmpeg sidecar binaries (fetched locally, not committed) ----
 # These are large and platform-specific. `pnpm setup:ffmpeg` repopulates them.
