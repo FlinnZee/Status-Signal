@@ -1,0 +1,5 @@
+# ffmpeg / ffprobe sidecar binaries are downloaded here by `pnpm fetch:ffmpeg`.
+# They are platform-specific and large, so they are not committed (see .gitignore).
+# Expected files after fetch (names include the Rust target triple):
+#   ffmpeg-<target-triple>[.exe]
+#   ffprobe-<target-triple>[.exe]

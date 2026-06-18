@@ -1,0 +1,32 @@
+[package]
+name = "puresignal"
+version = "0.1.0"
+description = "WhatsApp Status video quality optimizer"
+authors = ["dr.v0id (TK NiRMAL)"]
+license = "MIT"
+edition = "2021"
+rust-version = "1.77"
+
+# The Tauri app logic lives in a lib so the binary stays a thin entry point.
+[lib]
+name = "puresignal_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+tauri-plugin-shell = "2"
+tauri-plugin-dialog = "2"
+tauri-plugin-opener = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+[profile.release]
+# Smaller, faster-to-ship binary — the whole point of choosing Tauri.
+panic = "abort"
+codegen-units = 1
+lto = true
+opt-level = "s"
+strip = true

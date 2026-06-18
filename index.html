@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PureSignal</title>
+    <link rel="stylesheet" href="/src/styles.css" />
+  </head>
+  <body>
+    <div id="app">
+      <!-- Title bar -->
+      <header class="topbar">
+        <div class="brand">
+          <span class="brand-mark" aria-hidden="true">
+            <span class="bar b1"></span><span class="bar b2"></span><span class="bar b3"></span>
+          </span>
+          <span class="brand-name">Pure<span class="accent">Signal</span></span>
+        </div>
+
+        <nav class="mode-switch" role="tablist" aria-label="Mode">
+          <button class="mode-tab is-active" data-mode="conform" role="tab" aria-selected="true">
+            Conform
+          </button>
+          <button class="mode-tab" data-mode="probe" role="tab" aria-selected="false">
+            Probe
+          </button>
+        </nav>
+      </header>
+
+      <main class="content">
+        <!-- ============ CONFORM MODE ============ -->
+        <section class="panel conform-panel" data-panel="conform">
+          <!-- Drop zone -->
+          <div id="dropzone" class="dropzone" tabindex="0">
+            <div class="dropzone-inner">
+              <div class="dropzone-glyph" aria-hidden="true">
+                <span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span>
+              </div>
+              <p class="dropzone-title">Drop video files here</p>
+              <p class="dropzone-sub">or <button id="browse-btn" class="link-btn">browse</button> — batch is fine</p>
+            </div>
+          </div>
+
+          <!-- Per-file queue -->
+          <ul id="queue" class="queue" aria-live="polite"></ul>
+
+          <!-- Advanced settings -->
+          <details class="advanced">
+            <summary>
+              <span class="adv-chevron" aria-hidden="true">›</span>
+              Advanced
+            </summary>
+            <div class="advanced-grid">
+              <label class="field">
+                <span class="field-label">Target bitrate</span>
+                <span class="field-row">
+                  <input id="opt-bitrate" type="number" min="500" max="20000" step="250" />
+                  <span class="unit">kbps</span>
+                </span>
+              </label>
+
+              <label class="field">
+                <span class="field-label">Resolution cap <small>(short edge)</small></span>
+                <span class="field-row">
+                  <input id="opt-rescap" type="number" min="360" max="2160" step="2" />
+                  <span class="unit">px</span>
+                </span>
+              </label>
+
+              <label class="field">
+                <span class="field-label">Framerate</span>
+                <select id="opt-fps">
+                  <option value="source">Keep source (recommended)</option>
+                  <option value="30">Cap at 30</option>
+                  <option value="60">Cap at 60</option>
+                </select>
+              </label>
+
+              <label class="field field-toggle">
+                <input id="opt-split" type="checkbox" />
+                <span class="field-label">Split clips over 30s into segments</span>
+              </label>
+
+              <button id="reset-defaults" class="ghost-btn">Reset to defaults</button>
+            </div>
+          </details>
+
+          <!-- Batch action bar -->
+          <div class="actionbar">
+            <span id="queue-status" class="queue-status muted">No files queued</span>
+            <div class="actionbar-buttons">
+              <button id="clear-btn" class="ghost-btn" disabled>Clear</button>
+              <button id="start-btn" class="primary-btn" disabled>Start</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============ PROBE MODE ============ -->
+        <section class="panel probe-panel is-hidden" data-panel="probe">
+          <div class="probe-intro">
+            <h2>Recalibrate against WhatsApp</h2>
+            <p class="muted">
+              WhatsApp's Status target drifts between app versions and platforms. Post a clip to
+              your Status, re-download your own status, then drop it here. PureSignal measures the
+              real current target and offers to update your preset.
+            </p>
+            <p class="hint muted">
+              Android: pull from
+              <code>Android/media/com.whatsapp/WhatsApp/Media/.Statuses</code>.
+            </p>
+          </div>
+
+          <div id="probe-dropzone" class="dropzone dropzone-sm" tabindex="0">
+            <div class="dropzone-inner">
+              <p class="dropzone-title">Drop a WhatsApp-processed clip</p>
+              <p class="dropzone-sub">or <button id="probe-browse-btn" class="link-btn">browse</button></p>
+            </div>
+          </div>
+
+          <div id="probe-result" class="probe-result is-hidden"></div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <span class="muted">PureSignal — local only, nothing leaves your machine.</span>
+        <span class="credit">by <b>dr.v0id</b> (TK NiRMAL)</span>
+      </footer>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

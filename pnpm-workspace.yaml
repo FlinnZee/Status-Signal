@@ -1,0 +1,8 @@
+allowBuilds:
+  esbuild: true
+# pnpm reads build-script allowlists here (not package.json) as of pnpm 10+.
+# These two need their post-install builds: esbuild fetches its native binary
+# (Vite depends on it) and the Tauri CLI links its platform binary.
+onlyBuiltDependencies:
+  - esbuild
+  - "@tauri-apps/cli"

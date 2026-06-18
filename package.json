@@ -1,0 +1,28 @@
+{
+  "name": "puresignal",
+  "private": true,
+  "version": "0.1.0",
+  "description": "WhatsApp Status video quality optimizer — pre-conform clips so WhatsApp's re-encode destroys less.",
+  "author": "dr.v0id (TK NiRMAL)",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "tauri": "tauri",
+    "gen:icons": "node scripts/gen-icons.mjs",
+    "fetch:ffmpeg": "node scripts/fetch-ffmpeg.mjs",
+    "setup": "node scripts/gen-icons.mjs && node scripts/fetch-ffmpeg.mjs"
+  },
+  "dependencies": {
+    "@tauri-apps/api": "^2.1.1",
+    "@tauri-apps/plugin-dialog": "^2.2.0",
+    "@tauri-apps/plugin-opener": "^2.2.5",
+    "@tauri-apps/plugin-shell": "^2.2.0"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2.1.0",
+    "vite": "^5.4.10"
+  }
+}

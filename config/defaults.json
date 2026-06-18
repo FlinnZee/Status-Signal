@@ -1,0 +1,33 @@
+{
+  "_comment": "PureSignal defaults. The encode preset is the v2 recipe (DESIGN.md §3.2); whatsappTarget is the measured WhatsApp Status output (DESIGN.md §2), updated by Probe mode. Edit values here to change the shipped defaults; runtime overrides live in config/active.json (gitignored).",
+
+  "bitrateKbps": 6000,
+  "resCap": 1080,
+  "fpsMode": "source",
+  "split": false,
+
+  "preset": "slow",
+  "profile": "high",
+  "level": "4.2",
+  "maxrateKbps": 8000,
+  "bufsizeKbps": 12000,
+  "keyint": 30,
+  "ref": 4,
+  "bframes": 3,
+  "aqMode": 3,
+  "aqStrength": 1.0,
+  "audioBitrateKbps": 192,
+  "audioRate": 44100,
+
+  "whatsappTarget": {
+    "width": 464,
+    "height": 832,
+    "videoBitrateKbps": 630,
+    "fps": 30.0,
+    "profile": "baseline",
+    "level": "3.1",
+    "keyint": 30,
+    "audioBitrateKbps": 75,
+    "audioRate": 44100
+  }
+}

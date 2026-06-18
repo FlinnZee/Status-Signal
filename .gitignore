@@ -1,0 +1,24 @@
+# ---- Dependencies ----
+node_modules/
+.pnpm-store/
+
+# ---- Build output ----
+dist/
+src-tauri/target/
+
+# ---- Bundled ffmpeg sidecar binaries (fetched locally, not committed) ----
+# These are large and platform-specific. `pnpm setup:ffmpeg` repopulates them.
+src-tauri/binaries/*
+!src-tauri/binaries/.gitkeep
+
+# ---- Local runtime config written by the app ----
+config/active.json
+
+# ---- Editor / OS noise ----
+.DS_Store
+Thumbs.db
+*.log
+
+# ---- Internal build brief & local agent settings (never published) ----
+SPEC.md
+.claude/
